@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c091a">
+  <meta name="description" content="Chog Escape Protocol. Your NFT's traits become powers in a new tactical escape every day.">
+  <title>Chog Escape Protocol — Your NFT is the game</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to game</a>
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Chog Escape Protocol home"><span class="brand-mark">C<span>✦</span></span><span>CHOG<span class="brand-light">/ESCAPE</span></span></a>
+    <div class="header-right"><span class="live-dot"></span><span class="header-live">DAILY SIGNAL LIVE</span><span id="utc-day" class="header-day"></span></div>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="headline">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="square"></span> NFT-POWERED TACTICAL HEIST <span class="eyebrow-line"></span> MONAD MAINNET</div>
+        <h1 id="headline">YOUR NFT<br><em>IS THE</em><br><span>GAME.</span></h1>
+        <p class="lede">Every Chog is a different escape plan. Its real onchain traits become powers. Its identity creates a new maze every day.</p>
+        <div class="hero-actions"><a class="button primary" href="#loadout">ENTER THE PROTOCOL <span aria-hidden="true">↗</span></a><a class="text-link" href="#how">HOW IT WORKS <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-stat"><span>01</span><span>CHOG NFT = ONE UNIQUE LOADOUT + ONE DAILY ROUTE</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="art-cross cross-a">+</div><div class="art-cross cross-b">+</div>
+        <div class="hero-card"><div class="hero-card-top"><span>PROTOCOL // 001</span><span>MONAD 143</span></div><div class="portrait-frame"><img id="hero-nft" src="" alt=""></div><div class="hero-card-bottom"><span id="hero-nft-name">CHOG #465</span><span class="card-signal">● ONLINE</span></div></div>
+        <div class="float-tag tag-one">TRAITS → TACTICS</div><div class="float-tag tag-two">OWNERSHIP → ACCESS</div>
+      </div>
+    </section>
+
+    <section id="loadout" class="play-section wrap" aria-labelledby="play-heading">
+      <div class="section-kicker"><span>01 / CONNECT</span><span>THE BRIEFING</span></div>
+      <div class="section-heading-row"><h2 id="play-heading">CHOOSE YOUR <i>CHOG.</i></h2><p>The NFT is the key, the character, and the procedural seed. Select a live token or try a transparent preview.</p></div>
+      <div class="loadout-grid">
+        <article class="panel nft-panel">
+          <div class="panel-top"><span>CHOG GENESIS // LIVE METADATA</span><span id="source-badge" class="source-badge preview">PREVIEW</span></div>
+          <div class="nft-content"><div class="nft-portrait"><img id="nft-image" src="" alt="Selected Chog NFT artwork" width="320" height="320"><span class="portrait-corner tl"></span><span class="portrait-corner br"></span></div><div class="nft-info"><span class="micro-label">SELECTED OPERATIVE</span><h3 id="nft-name">LOADING CHOG…</h3><a id="explorer-link" class="external-link" href="https://monadvision.com" target="_blank" rel="noopener noreferrer">VERIFY ON MONADVISION ↗</a><div id="trait-list" class="trait-list"></div></div></div>
+        </article>
+        <article class="panel access-panel">
+          <div class="panel-top"><span>ACCESS TERMINAL</span><span>↘</span></div>
+          <div class="access-inner"><h3>PLAY WITH<br><span>YOUR OWN NFT.</span></h3><p>Connect an EVM wallet, enter your Chog Genesis token ID, and we verify its owner directly against Monad.</p>
+            <button id="connect-btn" class="button dark" type="button">CONNECT WALLET <span aria-hidden="true">↗</span></button>
+            <label for="token-id">YOUR CHOG TOKEN ID</label><div class="token-row"><input id="token-id" type="number" min="0" max="100000" inputmode="numeric" placeholder="e.g. 973"><button id="verify-btn" class="button small" type="button">VERIFY & PLAY</button></div>
+            <p id="wallet-status" class="status" role="status">No wallet connected. Preview mode is available below.</p>
+            <div class="panel-divider"><span>OR TEST THE EXPERIENCE</span></div>
+            <div class="preview-buttons"><button class="preview-choice active" data-preview="973" type="button">FIRE CHOG <small>#973</small></button><button class="preview-choice" data-preview="533" type="button">LASER CHOG <small>#533</small></button></div>
+            <p class="preview-note">Preview uses real public NFT metadata but simulates ownership. Preview scores are local and cannot be claimed as verified runs.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="arena" class="arena-section wrap" aria-labelledby="arena-heading">
+      <div class="section-kicker"><span>02 / EXECUTE</span><span>DAILY ESCAPE</span></div>
+      <div class="arena-heading"><div><h2 id="arena-heading">THE <i>MAZE</i> CHANGES.</h2><p>Collect all three signal fragments. Avoid traps and drones. Reach extraction before turn 45.</p></div><div class="daily-chip"><span>DAILY ROUTE / UTC</span><strong id="game-date"></strong></div></div>
+      <div class="arena-layout">
+        <div class="arena-main panel"><div class="game-top"><span>SECTOR 07 // LIVE SIMULATION</span><span id="game-mode">PREVIEW MODE</span></div><div class="board-frame"><div id="board" class="board" role="img" aria-label="Seven by seven tactical maze"></div><div id="board-overlay" class="board-overlay"><span class="overlay-kicker">AWAITING OPERATIVE</span><strong>READY TO<br>BREAK OUT?</strong><button id="start-btn" class="button primary" type="button">START DAILY RUN <span aria-hidden="true">↗</span></button></div></div><div class="game-bottom"><span>MOVE: WASD / ARROWS</span><span>POWER: SPACE</span></div></div>
+        <aside class="arena-side"><div class="panel stats-panel"><div class="panel-top"><span>OPERATIVE STATUS</span><span id="run-status">STANDBY</span></div><div class="stats-content"><div class="stat-row"><span>HEARTS</span><strong id="hp">—</strong></div><div class="stat-row"><span>POWER CHARGES</span><strong id="energy">—</strong></div><div class="stat-row"><span>FRAGMENTS</span><strong id="fragments">0 / 3</strong></div><div class="stat-row"><span>TURNS</span><strong id="turns">0 / 45</strong></div><div class="ability"><span class="micro-label">NFT TRAIT ABILITY</span><strong id="power-name">FIRESTORM</strong><p id="power-desc">Fire aura clears nearby traps and stuns drones.</p><button id="power-btn" class="button power-button" type="button" disabled>USE POWER <span>SPACE</span></button></div></div></div>
+          <div class="panel controls-panel"><div class="panel-top"><span>CONTROL DECK</span><span>↗</span></div><div class="dpad"><button type="button" data-move="0,-1" aria-label="Move up">↑</button><div><button type="button" data-move="-1,0" aria-label="Move left">←</button><button type="button" data-move="0,1" aria-label="Move down">↓</button><button type="button" data-move="1,0" aria-label="Move right">→</button></div></div><p>Keyboard or touch. Traps are revealed within your Chog’s vision radius.</p></div>
+          <div class="mission-log" aria-live="polite"><span>/// MISSION LOG</span><p id="log">Load a Chog to begin.</p></div>
+        </aside>
+      </div>
+      <div id="result" class="result panel" hidden><div><span class="micro-label">RUN COMPLETE</span><h3 id="result-title"></h3><p id="result-copy"></p></div><div class="result-actions"><strong id="result-score"></strong><button id="share-btn" class="button dark" type="button">COPY RUN CARD ↗</button><button id="retry-btn" class="button ghost" type="button">RETRY ROUTE</button></div></div>
+    </section>
+
+    <section id="how" class="how-section wrap" aria-labelledby="how-heading"><div class="section-kicker"><span>03 / WHY THE NFT MATTERS</span><span>NO DECORATIVE JPEGs</span></div><h2 id="how-heading">REMOVE THE NFT.<br><i>THE GAME BREAKS.</i></h2><div class="how-grid"><article><span>01 — OWNERSHIP</span><h3>THE KEY</h3><p>Live play requires the connected wallet to own the selected Chog Genesis token on Monad mainnet.</p></article><article><span>02 — TRAITS</span><h3>THE LOADOUT</h3><p>Aura, eyes, body, and head traits change your power, sight, hearts, and charge capacity.</p></article><article><span>03 — IDENTITY</span><h3>THE WORLD</h3><p>The token ID and traits seed a distinct route that rotates each UTC day. Another Chog means another puzzle.</p></article></div><p class="how-footnote">Runs and personal bests are stored in this browser. There is no onchain score claim or token transaction.</p></section>
+  </main>
+  <footer><div class="wrap footer-inner"><span class="brand">CHOG<span class="brand-light">/ESCAPE</span></span><span>BUILT FOR CHOGATHON 2026</span><a href="https://chogathon.chog.xyz/" target="_blank" rel="noopener noreferrer">THE CHALLENGE ↗</a></div></footer>
+</body>
+</html>
