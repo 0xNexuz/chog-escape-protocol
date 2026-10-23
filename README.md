@@ -59,7 +59,7 @@ flowchart TD
     C --> D["Daily seeded maze"]
     D --> E["Collect 3 fragments"]
     E --> F{Escape by turn 45?}
-    F -->|Yes| G["Score + local personal best"]
+    F -->|Yes| G["Score + local badge and streak progress"]
     F -->|No| H["Retry the same daily route"]
     G --> I["Share run card / return tomorrow"]
     H --> D
@@ -102,9 +102,9 @@ The wallet is used for an **address comparison only**. The current game does **n
 
 - **Same token + same UTC date:** same generated daily maze, suitable for practicing a route.
 - **Different token:** NFT identity and traits influence the map and loadout.
-- **Next UTC day:** reload the page to use the new date and its seeded challenge. The current page captures the UTC date when loaded.
-- **Personal best:** recorded in the current browser.
-- **Share run card:** a copyable text result with score, turns, Chog identity, and **preview vs. owner-verified** status.
+- **Next UTC day:** starting a new run uses the current UTC date and its seeded challenge.
+- **Local progress:** completed runs, daily bests, gameplay-earned badges, and successful-run streaks are kept per token and run mode. Existing personal bests remain intact and are not converted into invented run records.
+- **Share run card:** copyable text and a downloadable branded PNG include token ID, ability, fragments, date, score, turns, and run mode. The PNG uses locally drawn graphics, so external NFT art cannot block the download.
 
 > Local personal bests are **not** global leaderboard entries or tamper-proof onchain scores. A public leaderboard, verified score receipts, and community tournaments are potential future directions, **not current features**.
 
@@ -126,7 +126,7 @@ Open **http://localhost:3000**. The local server serves the frontend and the sam
 npm test
 ```
 
-The repository's initial automated suite includes **three game-engine tests** covering trait-derived builds, deterministic token-specific maps, and immutable movement/power behavior. They are not comprehensive coverage of all gameplay outcomes.
+The updated automated suite passes **17 tests** covering trait-derived builds, 360 deterministic token/date/trait seeds with static routes of at most 38 turns, nine representative dynamic wins with moving drones, all three powers, collisions, energy, fragments, win/loss outcomes, invalid actions, local progress, and NFT API failures.
 
 The [project context and verification record](docs/PROJECT_CONTEXT.md) documents live `ownerOf`/`tokenURI` lookups, public NFT metadata responses, and a browser preview that started a game and advanced its turn counter. **A complete browser win and owner-wallet path with a real holder have not been independently verified in that record.**
 
@@ -135,9 +135,9 @@ For judging, see the [**submission draft**](docs/SUBMISSION_DRAFT.md). A final h
 ## Known limitations
 
 - **Preview is not proof of ownership.** It uses public NFT metadata while simulating access.
-- The connected wallet's ownership is checked when a token is verified, **not continuously on every turn**. The API may serve a cached ownership response (30-second shared-cache lifetime, with a further 30-second stale-while-revalidate window).
+- The connected wallet's ownership is checked when a token is verified and rechecked without caching at the start of each verified run. Account and network changes clear verified mode. Ownership is **not continuously checked on every turn**.
 - Scores and personal bests are browser-local and can be altered; there is no shared leaderboard or onchain score claim.
-- Public RPC/IPFS performance can affect NFT loading; a sample fallback is clearly labeled if live metadata is unavailable.
+- Public RPC/IPFS performance can affect NFT loading; a sample fallback and its results are clearly labeled if live metadata is unavailable.
 - This is a casual playable prototype, not a financial product or audited onchain gaming system.
 
 ## Hackathon disclosure and rights

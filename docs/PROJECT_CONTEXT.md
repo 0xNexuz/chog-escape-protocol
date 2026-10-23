@@ -7,14 +7,14 @@
 - **Production:** https://chog-escape-protocol.vercel.app
 - **Description:** Daily tactical Chog NFT heist
 - **Stage:** SUBMISSION PREPARATION
-- **Status:** DEPLOYED and live flow VERIFIED
+- **Status:** Public baseline deployed; final-pass release branch prepared locally
 - **Updated:** 2026-10-23
 
 ## Git state
 
-- **Local branch:** main; local commit `d807a46`
-- **GitHub main:** browser commits, latest deployed `f39b490` (API addition). Browser upload was used because local Git authentication and TLS verification failed, so local and remote commit graphs differ.
-- **Last verified milestone:** Vercel production app, live NFT API, browser preview movement, game logic tests
+- **Local branch:** `release-final-polish` from GitHub `main` at `5b8a7cf`; the separate local `final-polish` commit `25c50ec` preserves the prior documentation edits and implementation work.
+- **GitHub main:** latest fetched `5b8a7cf`. Its newer README and decision to remove a separate recording-script document were preserved. The original local root `d807a46` and GitHub history remain separate.
+- **Last verified milestone:** Vercel baseline app and live NFT API; local final-pass tests and browser preview interaction. The public deployment does not include final-pass changes yet.
 
 ## Hackathon context
 
@@ -36,9 +36,9 @@
 
 ## Progress and verification
 
-- **Implemented:** Onchain `ownerOf` / `tokenURI` lookup, allowlisted trait metadata, wallet connection and owner match, daily deterministic maze, distinct NFT abilities, traps/drones/fragments/exit, keyboard and touch controls, local personal best, preview disclosure, responsive UI.
-- **Verified:** `npm test` passed 3 tests locally. Direct `getNft(973)` returned live owner and traits. The Vercel production app loaded; its `/api/nft?id=533` returned owner, real metadata, chain 143, and collection contract. Public UI loaded token IDs 973 and 533 with distinct Firestorm/Laser powers, started a preview run, accepted movement, and advanced the turn counter. GitHub main contains app and API code.
-- **Unverified:** A complete win flow in browser and wallet owner flow with an actual holder wallet. Demo video and official submission remain outstanding; the user asked to submit personally.
+- **Implemented locally in final pass:** Seeded Fisher–Yates generation with static route slack; structured power/damage/fragment/outcome events; balanced drone cadence and hit shield; fresh owner recheck at verified run start; stale-request and wallet-change handling; distinct preview/sample/verified labels and records; local daily bests, badges, three-day successful-run streak, expanded text share and branded PNG; mobile controls/HUD and reduced-motion styles.
+- **Verified:** `npm test` passed 17 tests on 2026-10-23, including 360 token/date/trait seeds with static route length at most 38 turns and nine representative dynamic win searches with traps, drones, and powers. The local homepage, CSS, and NFT API each returned anonymous HTTP 200. A desktop browser loaded live metadata, started preview, and advanced by keyboard. Earlier mobile layout testing at 375px showed no horizontal overflow.
+- **Unverified:** A complete win/loss in browser and wallet owner flow with an actual holder wallet. Demo video and official submission remain outstanding; the user asked to submit personally and requested no video creation by the agent.
 - **Known issue:** Public IPFS gateway occasionally takes over 9 seconds; timeout was raised to 20 seconds and live lookup then succeeded. Availability remains external dependency.
 
 ## Decision log
@@ -59,7 +59,7 @@
 
 ## Next action
 
-1. Add documentation to GitHub and prepare a ≤3-minute demo video if possible.
+1. Publish the reviewed final-pass branch and verify the public deployment; no video is to be created by the agent.
 2. Give the user copy-ready submission text. They will enter their own team/handle details and submit themselves.
 
-**Authorization:** User explicitly authorized full GitHub and Vercel deployment, but subsequently clarified they will perform the official form submission. Credentials, wallet transactions, and spending are not needed for the MVP.
+**Authorization:** User authorized full GitHub and Vercel deployment and reiterated “you have perms” after the final diff/test evidence was presented. They will perform official form submission. Credentials, wallet transactions, and spending are not needed for the MVP.
