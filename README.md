@@ -1,52 +1,189 @@
-# Chog Escape Protocol
 
-**Your NFT is the game.** Chog Escape Protocol is a daily turn-based tactical heist. A Chog Genesis NFT determines the player's powers, health, vision, energy, and daily maze. Each Chog produces a different route. The owner can verify the token on Monad and play it; everyone else can explore a clearly labeled preview using real public NFT metadata.
 
-Built for [Chogathon 2026](https://chogathon.chog.xyz/).
+CHOG ESCAPE PROTOCOL
 
-## Why the NFT matters
+YOUR NFT IS THE GAME.
 
-1. **Access:** live mode checks `ownerOf(tokenId)` on the Chog Genesis contract against the connected wallet.
-2. **Ability:** Aura, Eyes, Body, and Head traits map to Firestorm, Laser, or Phase plus hearts, vision, and charge capacity.
-3. **World:** the token ID and actual metadata traits seed a deterministic maze that changes each UTC day.
+A daily tactical escape where your real Chog Genesis NFT determines your abilities, your stats, and the maze you face.
 
-Without the NFT, these mechanics lack their identity and inputs. Preview mode simulates ownership for non-holders and is prominently labeled.
 
-## Try it
+Collect three signal fragments. Evade traps and drones. Reach the exit before turn 45.
 
-```bash
+
+▶ Play the game · View source · Demo script · Chogathon 2026
+
+
+Built on Monad mainnet, powered by real Chog Genesis traits. No NFT is needed to try preview mode.
+
+
+
+
+
+The challenge
+
+Most NFT games can swap their token image for any other character without changing what the player does. Chog Escape makes the NFT a game mechanic.
+
+
+A Chog's real metadata drives the loadout. Its identity seeds a deterministic maze that changes each UTC day. Switch NFTs and you can get a different power, different stats, and a different route.
+
+
+Designed for Chog holders who want to play with their collectibles and curious nonholders who want a fast, free arcade challenge.
+
+
+Play in 30 seconds
+
+
+Open Chog Escape Protocol.
+
+Select Fire Chog #973 to load its public metadata and start a clearly labeled preview run.
+
+Move with WASD, arrow keys, or the on-screen directional controls.
+
+Use Space or Use Power to activate Firestorm. Watch your health, power charges, and turns.
+
+Collect 3 signal fragments, avoid traps and chasing drones, and reach the lime exit before turn 45.
+
+Try Laser Chog #533 to see different traits, powers, and a different daily maze.
+
+
+Own a Chog? Connect an EVM wallet, enter its onchain token ID, and use Verify & Play. The game compares the connected address with ownerOf(tokenId) on Monad. Connecting and checking ownership require no transaction or signature.
+
+
+
+The number in an NFT's artwork/display name may differ from its onchain token ID. For example, onchain token 973 has been observed with the display name CHOG #465. Use the token ID, not the display name, when verifying ownership.
+
+
+
+Why the Chog NFT is essential
+
+NFT data	What it changes in the game
+Owner (ownerOf)	Determines whether the connected wallet can enter owner-verified mode for that token.
+Aura	Can unlock Firestorm, clearing nearby traps and stunning drones.
+Eyes	Can unlock Laser, and influence how far the player sees.
+Body	Influences the character's available hearts.
+Head	Influences power-charge capacity.
+Token ID + traits	Seed that NFT's reproducible daily maze.
+
+Chogs without the matching Fire Aura or Laser Eyes receive the Phase ability, allowing tactical movement two tiles ahead when a landing tile is open. The game calculates these effects from actual metadata; it does not assign arbitrary stats after the fact.
+
+
+The NFT is the key, the loadout, and the world seed. Preview mode lets anyone explore these mechanics without pretending to own a token.
+
+
+The gameplay loop
+
+flowchart LR
+    A[Select Chog NFT] --> B[Read Monad ownership + metadata]
+    B --> C[Trait-based loadout]
+    C --> D[Daily seeded maze]
+    D --> E[Collect 3 fragments]
+    E --> F{Escape by turn 45?}
+    F -->|Yes| G[Score + local personal best]
+    F -->|No| H[Retry the same daily route]
+    G --> I[Share run card / return tomorrow]
+    H --> D
+
+Each maze contains obstacles, hazards, roaming drones, and three collectibles. Firestorm, Laser, and Phase offer different ways to handle danger. The layout stays reproducible for the same NFT and UTC day; the day changes the challenge.
+
+
+Controls
+
+Action	Desktop	Touch
+Move	WASD or arrow keys	On-screen directional controls
+Use NFT power	Space	Use Power button
+Restart	Retry Route	Retry Route
+
+Monad integration: real NFTs, not decorative images
+
+The serverless NFT API, api/nft.js, queries the Chog Genesis ERC-721 on Monad mainnet:
+
+
+
+Chain ID: 143
+
+Genesis contract: 0xc96d31f8626c6d03fae5dcd3d61e3fb9f4a73763
+
+Public RPC: https://rpc.monad.xyz
+
+NFT methods: ownerOf(tokenId) and tokenURI(tokenId)
+
+Metadata: public IPFS JSON and NFT artwork, with allowlisted trait fields
+
+
+flowchart TD
+    A[Browser: token ID / connected wallet] --> B[Serverless NFT API]
+    B --> C[Chog Genesis ERC-721 on Monad]
+    C --> D[ownerOf + tokenURI]
+    D --> E[Public IPFS metadata]
+    E --> F[Traits + image + owner returned to browser]
+    F --> G[Ownership label + deterministic game engine]
+    G --> H[Daily tactical escape]
+
+The wallet is used for an address comparison only. The current game does not require token transfers, onchain game transactions, private keys, or a paid API.
+
+
+Share, retry, return
+
+
+Same token + same UTC date: same generated daily maze, suitable for practicing a route.
+
+Different token: NFT identity and traits influence the map and loadout.
+
+Next UTC day: a new seeded challenge.
+
+Personal best: recorded in the current browser.
+
+Share run card: a copyable text result with score, turns, Chog identity, and preview vs. owner-verified status.
+
+
+
+Local personal bests are not global leaderboard entries or tamper-proof onchain scores. A public leaderboard, verified score receipts, and community tournaments are potential future directions, not current features.
+
+
+
+Run locally
+
+Requires a recent Node.js version with built-in fetch support (Node.js 20+ recommended). No application runtime packages or API credentials are needed for the basic experience.
+
+
+git clone https://github.com/0xNexuz/chog-escape-protocol.git
+cd chog-escape-protocol
 npm run dev
-```
 
-Open `http://localhost:3000`. No install step or API key is required. Click **Fire Chog #973** or **Laser Chog #533**, start a run, move with WASD, arrow keys, or the touch controls, and use your power with Space or the power button. Collect all three fragments and reach the lime exit before turn 45. A retry uses the same daily maze; switching tokens changes the build and maze.
+Open http://localhost:3000. The local server serves the frontend and the same NFT API route. Live metadata lookups require network access to Monad RPC and the public IPFS gateway.
 
-To use an owned Chog, connect an EVM wallet and enter its **onchain token ID** (which may differ from the number in the artwork's name). The app compares the connected address to `ownerOf` on Monad mainnet. It requests no transaction or signature.
 
-## Under the hood
+Testing and evidence
 
-- Vanilla HTML, CSS, and browser JavaScript, with no runtime packages.
-- Node serverless function `api/nft.js` reads `ownerOf` and `tokenURI` from Chog Genesis on Monad mainnet (`chainId 143`), then retrieves public metadata via IPFS. It returns only allowlisted trait fields and an image URL.
-- Pure game engine in `game-core.mjs` generates a deterministic daily route and applies movement, traps, drones, power effects, and scoring.
-- Personal bests are stored in this browser. The share card identifies preview versus verified runs.
-- No private key, transaction, database, paid API, or onchain score claim.
-
-The Chog Genesis contract is `0xc96d31f8626c6d03fae5dcd3d61e3fb9f4a73763` on Monad mainnet. Monad's public RPC is `https://rpc.monad.xyz`. Both were checked against [OpenSea's Chog Genesis token page](https://opensea.io/item/monad/0xc96d31f8626c6d03fae5dcd3d61e3fb9f4a73763/973) and [Monad's developer information](https://github.com/monad-developers).
-
-## Verify
-
-```bash
 npm test
-```
 
-The tests check trait-derived abilities, deterministic token-specific maps, and non-mutating turns. For a live integration check, open the app and confirm that #973 loads as `CHOG #465`, then switch to #533 and confirm `LASER`. The public metadata gateway can be slow; if it fails, the app labels #973 as sample data and keeps owner verification unavailable until a live lookup succeeds.
+The repository's initial automated suite includes three game-engine tests covering trait-derived builds, deterministic token-specific maps, and immutable movement/power behavior. They are not comprehensive coverage of all gameplay outcomes.
 
-## Known limits
 
-- Wallet ownership is verified when a live NFT is selected, not continuously during a run. This is a casual game, not a token-gated financial action.
-- Scores and personal bests are browser local and can be altered by the player. There is no global leaderboard or prize claim.
-- Preview mode is not proof of ownership.
-- Public RPC and IPFS availability affect live metadata loading.
+The project context and verification record documents live ownerOf/tokenURI lookups, public NFT metadata responses, and a browser preview that started a game and advanced its turn counter. A complete browser win and owner-wallet path with a real holder have not been independently verified in that record.
 
-## Hackathon disclosure
 
-All application code in this repository was created during this Chogathon work session. The author's previous projects informed the design but no pre-existing application code was copied into this repository. The displayed NFT artwork belongs to its respective rights holders and is loaded from the token's public metadata; the code license does not cover that artwork.
+For judging, see the under-three-minute demo script and submission draft. A final hosted video link should be added here only after it has actually been published and checked.
+
+
+Known limitations
+
+
+Preview is not proof of ownership. It uses public NFT metadata while simulating access.
+
+The connected wallet's ownership is checked when a token is verified, not continuously on every turn.
+
+Scores and personal bests are browser-local and can be altered; there is no shared leaderboard or onchain score claim.
+
+Public RPC/IPFS performance can affect NFT loading; a sample fallback is clearly labeled if live metadata is unavailable.
+
+This is a casual playable prototype, not a financial product or audited onchain gaming system.
+
+
+Hackathon disclosure and rights
+
+Built for Chogathon 2026. Project-specific code was created during this hackathon work; the project draws on prior development experience but does not claim that third-party NFT images are original artwork.
+
+
+The Chog Genesis art displayed by the application is retrieved from the tokens' public metadata and remains subject to its respective rights. A repository-wide source-code license is not currently declared in a root LICENSE file. Add one separately if you choose to license the code; NFT artwork rights should remain explicitly excluded from that license.
+
