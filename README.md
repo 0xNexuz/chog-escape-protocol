@@ -8,7 +8,7 @@
 
 Collect three signal fragments. Evade traps and drones. Reach the exit by turn **45**.
 
-[**▶ Play the game**](https://chog-escape-protocol.vercel.app/) · [**View source**](https://github.com/0xNexuz/chog-escape-protocol) · [**Demo script**](docs/DEMO_SCRIPT.md) · [**Chogathon 2026**](https://chogathon.chog.xyz/)
+[**▶ Play the game**](https://chog-escape-protocol.vercel.app/) · [**View source**](https://github.com/0xNexuz/chog-escape-protocol) · [**Chogathon 2026**](https://chogathon.chog.xyz/)
 
 *Built on Monad mainnet, powered by real Chog Genesis traits. No NFT is needed to try preview mode.*
 
@@ -130,7 +130,7 @@ The repository's initial automated suite includes **three game-engine tests** co
 
 The [project context and verification record](docs/PROJECT_CONTEXT.md) documents live `ownerOf`/`tokenURI` lookups, public NFT metadata responses, and a browser preview that started a game and advanced its turn counter. **A complete browser win and owner-wallet path with a real holder have not been independently verified in that record.**
 
-For judging, see the [**under-three-minute demo script**](docs/DEMO_SCRIPT.md) and [**submission draft**](docs/SUBMISSION_DRAFT.md). A final hosted video link should be added here **only after it has actually been published and checked**.
+For judging, see the [**submission draft**](docs/SUBMISSION_DRAFT.md). A final hosted video link should be added here **only after it has actually been published and checked**.
 
 ## Known limitations
 

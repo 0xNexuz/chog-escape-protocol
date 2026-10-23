@@ -8,7 +8,7 @@
 - **Description:** Daily tactical Chog NFT heist
 - **Stage:** SUBMISSION PREPARATION
 - **Status:** DEPLOYED and live flow VERIFIED
-- **Updated:** 2026-10-22
+- **Updated:** 2026-10-23
 
 ## Git state
 
@@ -42,6 +42,12 @@
 - **Known issue:** Public IPFS gateway occasionally takes over 9 seconds; timeout was raised to 20 seconds and live lookup then succeeded. Availability remains external dependency.
 
 ## Decision log
+
+### 2026-10-23 — Remove recording script
+
+- **Decision:** Remove the recording script document and both README references at the user's request.
+- **Scope:** Documentation only; gameplay, live app links, submission draft, and existing verification evidence are preserved.
+- **Verification:** Checked that the README no longer refers to the removed document. No application behavior changed.
 
 ### 2026-10-22 — Select daily NFT heist
 
