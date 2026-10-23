@@ -41,7 +41,13 @@ function sandbox(power = 'FIRESTORM') {
 test('seeded maze is stable across trait order, distinct across identities, and has route slack', () => {
   for (const date of ['2026-10-22', '2026-10-23', '2026-11-05']) {
     for (let id = 1; id <= 120; id++) {
-      const token = { ...nft, id };
+      const values = {
+        Aura: ['Fire', 'Blue', 'Gold'], Eyes: ['Round Crying', 'cyan laser', 'Vertical'],
+        Body: ['Black Trackset', 'Plain'], Head: ['Russian Hat', 'Crown']
+      };
+      const token = { ...nft, id, attributes: nft.attributes.map((item, index) => ({
+        ...item, value: values[item.trait_type]?.[(id + index) % values[item.trait_type].length] ?? item.value
+      })) };
       const game = createGame(token, date);
       assert.ok(shortestRouteLength(game.walls) <= LIMIT - 7, `${date} #${id} route too long`);
       assert.deepEqual(game.walls, createGame({ ...token, attributes: [...token.attributes].reverse() }, date).walls);
